@@ -39,8 +39,14 @@ def main():
         for obj in updatable:
             obj.update(dt)
         for ast in asteroids:
-            collision = ast.collides_with(ship)
-            if collision == True:
+            ship_collision = ast.collides_with(ship)
+            for shot in shots:
+                shot_collision = ast.collides_with(shot)
+                if shot_collision == True:
+                    log_event("asteroid_shot")
+                    shot.kill()
+                    ast.kill()
+            if ship_collision == True:
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit()
