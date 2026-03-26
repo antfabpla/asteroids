@@ -45,7 +45,7 @@ def main():
                 if shot_collision == True:
                     log_event("asteroid_shot")
                     shot.kill()
-                    ast.kill()
+                    ast.split()
             if ship_collision == True:
                 log_event("player_hit")
                 print("Game over!")
